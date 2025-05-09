@@ -1,0 +1,115 @@
+<odoo>
+  <data>
+    <!-- explicit list view definition -->
+
+    <record model="ir.ui.view" id="pet_management.pets_list">
+      <field name="name">pet_management list</field>
+      <field name="model">pet_management.pet</field>
+      <field name="arch" type="xml">
+        <list>
+          <field name="name" />
+          <field name="species_id" options="{'no_create': False}" />
+          <field name="sex"/>
+          <field name="birthday" />
+          <field name="owner_id" string="Propietario" />
+        </list>
+      </field>
+    </record>
+
+    <record model="ir.ui.view" id="pet_management.pets_form">
+      <field name="name">pet_management.pet.form</field>
+      <field name="model">pet_management.pet</field>
+      <field name="arch" type="xml">
+        <form string="Mascota">
+          <sheet>
+            <group>
+              <group>
+                <field name="name"/>
+                <field name="species_id" options="{'no_create': False}"/>
+                <field name="sex"/>
+              </group>
+              <group>
+                <field name="birthday"/>
+                <field name="owner_id" string="Propietario"/>
+              </group>
+            </group>
+            <notebook>
+              <page string="Vacunas">
+                <field name="vaccination_ids">
+                  <list>
+                    <field name="name" />
+                    <field name="vaccine_date" />
+                    <field name="veterinarian" />
+                  </list>
+                  <form>
+                    <group>
+                      <field name="name" />
+                      <field name="vaccine_date" />
+                      <field name="veterinarian" />
+                    </group>
+                  </form>
+                </field>
+              </page>
+            </notebook>
+          </sheet>
+        </form>
+      </field>
+    </record>
+
+
+    <!-- actions opening views on models -->
+
+    <record model="ir.actions.act_window" id="pet_management.pets_action_window">
+      <field name="name">Listado de mascotas</field>
+      <field name="res_model">pet_management.pet</field>
+      <field name="view_mode">list,form</field>
+    </record>
+
+    <record model="ir.actions.act_window" id="pet_management.pets_action_window_form">
+      <field name="name">Nueva Mascota</field>
+      <field name="res_model">pet_management.pet</field>
+      <field name="view_mode">form</field>
+      <field name="target">current</field>
+    </record>
+
+
+    <!-- server action to the one above -->
+    <!--
+    <record model="ir.actions.server" id="pet_management.action_server">
+      <field name="name">pet_management server</field>
+      <field name="model_id" ref="model_pet_management_pet_management"/>
+      <field name="state">code</field>
+      <field name="code">
+        action = {
+          "type": "ir.actions.act_window",
+          "view_mode": "list,form",
+          "res_model": model._name,
+        }
+      </field>
+    </record>
+-->
+
+    <!-- Top menu item -->
+
+    <menuitem name="Pet Management" id="pet_management.menu_root" />
+
+    <!-- menu categories -->
+
+    <menuitem name="Mascotas" id="pet_management.pets_menu_1" parent="pet_management.menu_root" />
+    <!--
+    <menuitem name="Menu 2" id="pet_management.menu_2" parent="pet_management.menu_root"/>
+-->
+    <!-- actions -->
+
+    <menuitem name="Ver mascotas"
+      id="pet_management.pets_menu_1_list"
+      parent="pet_management.pets_menu_1"
+      action="pet_management.pets_action_window" />
+
+    <menuitem name="Añadir mascota"
+      id="pet_management.pets_menu_1_add"
+      parent="pet_management.pets_menu_1"
+      action="pet_management.pets_action_window_form" />
+
+  </data>
+</odoo>

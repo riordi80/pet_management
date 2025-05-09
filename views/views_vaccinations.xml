@@ -1,0 +1,81 @@
+<odoo>
+  <data>
+    <!-- explicit list view definition -->
+
+    <record model="ir.ui.view" id="pet_management.vaccinations_list">
+      <field name="name">pet_management list</field>
+      <field name="model">pet_management.vaccination</field>
+      <field name="arch" type="xml">
+        <list>
+          <field name="pet_id" string="Mascota"/>
+          <field name="name" string="Vacuna"/>
+          <field name="vaccine_date" string="Fecha"/>
+          <field name="veterinarian" string="Veterinario/a"/>
+        </list>
+      </field>
+    </record>
+
+    <record model="ir.ui.view" id="pet_management.vaccinations_form">
+      <field name="name">pet_management.vaccination.form</field>
+      <field name="model">pet_management.vaccination</field>
+      <field name="arch" type="xml">
+        <form string="Vacuna">
+          <sheet>
+            <group>
+              <field name="name" string="Nombre"/>
+              <field name="vaccine_date" string="Fecha"/>
+              <field name="veterinarian"  string="Veterinario/a"/>
+              <field name="pet_id" string="Mascota"/>
+            </group>
+          </sheet>
+        </form>
+      </field>
+    </record>
+    
+
+
+    <!-- actions opening views on models -->
+
+    <record model="ir.actions.act_window" id="pet_management.vaccinations_action_window">
+      <field name="name">Listado de vacunas</field>
+      <field name="res_model">pet_management.vaccination</field>
+      <field name="view_mode">list,form</field>
+    </record>
+
+
+    <!-- server action to the one above -->
+<!--
+    <record model="ir.actions.server" id="pet_management.action_server">
+      <field name="name">pet_management server</field>
+      <field name="model_id" ref="model_pet_management_pet_management"/>
+      <field name="state">code</field>
+      <field name="code">
+        action = {
+          "type": "ir.actions.act_window",
+          "view_mode": "list,form",
+          "res_model": model._name,
+        }
+      </field>
+    </record>
+-->
+
+    <!-- Top menu item -->
+
+    <menuitem name="Pet Management" id="pet_management.menu_root"/>
+
+    <!-- menu categories -->
+
+    <menuitem name="Vacunas" id="pet_management.vaccinations_menu_1" parent="pet_management.menu_root"/>
+<!--
+    <menuitem name="Menu 2" id="pet_management.menu_2" parent="pet_management.menu_root"/>
+-->
+    <!-- actions -->
+
+    <menuitem name="Listado" id="pet_management.vaccinations_menu_1_list" parent="pet_management.vaccinations_menu_1"
+          action="pet_management.vaccinations_action_window"/>
+<!--
+    <menuitem name="Server to list" id="pet_management" parent="pet_management.menu_2"
+              action="pet_management.action_server"/>
+-->
+  </data>
+</odoo>
