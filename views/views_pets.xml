@@ -9,7 +9,7 @@
         <list>
           <field name="name" />
           <field name="species_id" options="{'no_create': False}" />
-          <field name="sex"/>
+          <field name="sex" />
           <field name="birthday" />
           <field name="owner_id" string="Propietario" />
         </list>
@@ -24,15 +24,25 @@
           <sheet>
             <group>
               <group>
-                <field name="name"/>
-                <field name="species_id" options="{'no_create': False}"/>
-                <field name="sex"/>
+                <field name="name" />
+                <field name="species_id" options="{'no_create': False}" />
+                <field name="sex" />
               </group>
               <group>
-                <field name="birthday"/>
-                <field name="owner_id" string="Propietario"/>
+                <field name="birthday" />
+                <field name="owner_id" string="Propietario" />
               </group>
             </group>
+
+            <!-- <button name="%(action_weight_log_graph)d" string="Ver gráfico de peso"
+            type="action" class="oe_stat_button" icon="fa-line-chart"/> -->
+            <button name="%(action_weight_log_graph)d"
+              string="Ver gráfico de peso"
+              type="action"
+              class="oe_stat_button"
+              icon="fa-line-chart" />
+
+
             <notebook>
               <page string="Vacunas">
                 <field name="vaccination_ids">
@@ -50,9 +60,40 @@
                   </form>
                 </field>
               </page>
+              <page string="Historial de peso">
+                <field name="weight_log_ids">
+                  <list>
+                    <field name="date" />
+                    <field name="weight" />
+                  </list>
+                  <form>
+                    <group>
+                      <field name="date" />
+                      <field name="weight" />
+                    </group>
+                  </form>
+                </field>
+              </page>
             </notebook>
           </sheet>
         </form>
+      </field>
+    </record>
+
+
+    <!-- search filter -->
+    <record id="pet_management.pets_search" model="ir.ui.view">
+      <field name="name">pet_management.pet.search</field>
+      <field name="model">pet_management.pet</field>
+      <field name="arch" type="xml">
+        <search string="Buscar mascota">
+          <field name="name" string="Nombre mascota" />
+          <field name="owner_id" string="Propietario" />
+          <group expand="0" string="Agrupar por">
+            <filter name="group_owner" string="Propietario" context="{'group_by': 'owner_id'}" />
+            <filter name="group_species" string="Especie" context="{'group_by': 'species_id'}" />
+          </group>
+        </search>
       </field>
     </record>
 

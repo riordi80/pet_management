@@ -1,0 +1,28 @@
+<odoo>
+  <data>
+
+    <!-- Vista de gráfico -->
+    <record id="view_weight_log_graph" model="ir.ui.view">
+      <field name="name">pet_management.weight_log.graph</field>
+      <field name="model">pet_management.weight_log</field>
+      <field name="arch" type="xml">
+        <graph string="Evolución del peso" type="line">
+          <field name="day_string" type="row"/>
+          <field name="weight" type="measure"/>
+          <field name="pet_id" invisible="1"/>
+        </graph>
+      </field>
+    </record>    
+
+    <!-- Acción para abrir el gráfico -->
+    <record id="action_weight_log_graph" model="ir.actions.act_window">
+      <field name="name">Gráfico de peso</field>
+      <field name="res_model">pet_management.weight_log</field>
+      <field name="view_mode">graph</field>
+      <field name="view_id" ref="view_weight_log_graph"/>
+      <field name="context">{}</field>
+      <field name="domain">[('pet_id','=',active_id)]</field>
+    </record>
+
+  </data>
+</odoo>

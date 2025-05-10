@@ -2,3 +2,4 @@ id,name,model_id:id,group_id,perm_read,perm_write,perm_create,perm_unlink
 access_pet,access.pet,model_pet_management_pet,,1,1,1,1
 access_vaccination,access.vaccination,model_pet_management_vaccination,,1,1,1,1
 access_species,access.species,model_pet_management_species,,1,0,1,0
+access_weight_log,access.weight.log,model_pet_management_weight_log,,1,1,1,1

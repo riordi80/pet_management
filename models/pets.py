@@ -20,12 +20,4 @@ class Pet(models.Model):
 ], string="Sexo")
     owner_id = fields.Many2one('res.partner', string="Propietario")
     vaccination_ids = fields.One2many('pet_management.vaccination', 'pet_id', string="Vacunas")
-
-#    value2 = fields.Float(compute="_value_pc", store=True)
-#    description = fields.Text()
-#
-#     @api.depends('value')
-#     def _value_pc(self):
-#         for record in self:
-#             record.value2 = float(record.value) / 100
-
+    weight_log_ids = fields.One2many('pet_management.weight_log', 'pet_id', string="Historial de peso")

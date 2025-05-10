@@ -61,19 +61,21 @@
 
     <!-- Top menu item -->
 
-    <menuitem name="Pet Management" id="pet_management.menu_root"/>
+<!--
+    Desactivado <menuitem name="Pet Management" id="pet_management.menu_root"/>
+-->
 
     <!-- menu categories -->
-
-    <menuitem name="Vacunas" id="pet_management.vaccinations_menu_1" parent="pet_management.menu_root"/>
 <!--
+    Desactivado <menuitem name="Vacunas" id="pet_management.vaccinations_menu_1" parent="pet_management.menu_root"/>
+
     <menuitem name="Menu 2" id="pet_management.menu_2" parent="pet_management.menu_root"/>
 -->
     <!-- actions -->
-
-    <menuitem name="Listado" id="pet_management.vaccinations_menu_1_list" parent="pet_management.vaccinations_menu_1"
-          action="pet_management.vaccinations_action_window"/>
 <!--
+    Desactivado  <menuitem name="Listado" id="pet_management.vaccinations_menu_1_list" parent="pet_management.vaccinations_menu_1"
+          action="pet_management.vaccinations_action_window"/>
+
     <menuitem name="Server to list" id="pet_management" parent="pet_management.menu_2"
               action="pet_management.action_server"/>
 -->
